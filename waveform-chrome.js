@@ -44,10 +44,6 @@ this.Waveform = function(_arg) {
     ProcessAudio.extract(buf.getChannelData(0), sections, self.view.drawBar);
     self.playback = PlayBuffer(audio, buf);
 
-    volume = audio.createGainNode();
-    self.playback.connect(volume);
-    volume.connect(context.destination);
-
     self.view.onCursor = self.playback.playAt;
     setInterval(function() {
       return self.view.moveCursor(self.playback.getTime() / buf.duration);
